@@ -7,36 +7,107 @@
   <name>snowdrop-install</name>
   
   <properties>
-  	<version.org.jboss.snowdrop>2.0.4.Final</version.org.jboss.snowdrop>
+  	<version.snowdrop>2.0.5.Final</version.snowdrop>
+  	<version.spring>3.1.1.RELEASE</version.spring>
   </properties>
   
   <dependencies>
   		<dependency>
   			<groupId>org.jboss.snowdrop</groupId>
   			<artifactId>snowdrop-deployers</artifactId>
-  			<version>${version.org.jboss.snowdrop}</version>
+  			<version>${version.snowdrop}</version>
   		</dependency>
   		
   		<dependency>
   			<groupId>org.jboss.snowdrop</groupId>
   			<artifactId>snowdrop-subsystem-as7</artifactId>
-  			<version>${version.org.jboss.snowdrop}</version>
+  			<version>${version.snowdrop}</version>
+  			<exclusions>
+  				<exclusion>
+  					<artifactId>spring-context</artifactId>
+  					<groupId>org.springframework</groupId>
+  				</exclusion>
+  				<exclusion>
+  					<artifactId>spring-core</artifactId>
+  					<groupId>org.springframework</groupId>
+  				</exclusion>
+  				<exclusion>
+  					<artifactId>spring-beans</artifactId>
+  					<groupId>org.springframework</groupId>
+  				</exclusion>
+  			</exclusions>
   		</dependency>
   		
   		<dependency>
   			<groupId>org.jboss.snowdrop</groupId>
   			<artifactId>snowdrop-vfs</artifactId>
-  			<version>${version.org.jboss.snowdrop}</version>
+  			<version>${version.snowdrop}</version>
+  			<exclusions>
+  				<exclusion>
+  					<artifactId>spring-context</artifactId>
+  					<groupId>org.springframework</groupId>
+  				</exclusion>
+  				<exclusion>
+  					<artifactId>spring-web</artifactId>
+  					<groupId>org.springframework</groupId>
+  				</exclusion>
+  				<exclusion>
+  					<artifactId>spring-core</artifactId>
+  					<groupId>org.springframework</groupId>
+  				</exclusion>
+  				<exclusion>
+  					<artifactId>spring-webmvc</artifactId>
+  					<groupId>org.springframework</groupId>
+  				</exclusion>
+  			</exclusions>
   		</dependency>  		
 
   		<dependency>
   			<groupId>org.jboss.snowdrop</groupId>
-  			<artifactId>snowdrop-module-spring-3.1</artifactId>
-  			<version>2.0.4.Final</version>
+  			<artifactId>${spring.artifacts}</artifactId>
+  			<version>${version.snowdrop}</version>
   			<type>pom</type>
   		</dependency>
   </dependencies>
-  
+
+	<profiles>
+		<profile>
+			<id>spring-3.1</id>
+			<properties>
+				<spring.artifacts>snowdrop-module-spring-3.1</spring.artifacts>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>spring-3.2</id>
+			<properties>
+				<spring.artifacts>snowdrop-module-spring-3.2</spring.artifacts>
+			</properties>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>spring-3</id>
+			<properties>
+				<spring.artifacts>snowdrop-module-spring-3</spring.artifacts>
+			</properties>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>spring-2.5</id>
+			<properties>
+				<spring.artifacts>snowdrop-module-spring-2.5</spring.artifacts>
+			</properties>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+		</profile>
+	</profiles>
   <build>
    <plugins>        
         	<plugin>
