@@ -142,7 +142,8 @@
 								</transformation>
 							</transformations>
 							<namespaceContexts>
-            					<s>urn:jboss:domain:1.4</s>
+            					<s>urn:jboss:domain:1.2</s>
+            					<ss>urn:jboss:domain:snowdrop:1.0</ss>
         					</namespaceContexts>
 						</configuration>
 					</execution>

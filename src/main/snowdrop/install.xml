@@ -1,7 +1,8 @@
 <processor>
-	<!-- <remove>
-		<name>/server/extensions/extension[@module="org.jboss.snowdrop"]</name>
-	</remove> -->
+	<remove>
+		<name>//s:extension[@module='org.jboss.snowdrop']</name>
+		<strict>false</strict>
+	</remove>
 	
     <add>
         <inside>//s:extensions</inside>
@@ -12,9 +13,10 @@
         </value>
     </add>
     
-    <!-- <remove>	
-		<name>/server/profile/subsystem[@xmlns="urn:jboss:domain:snowdrop:1.0"]</name>
-	</remove> -->
+    <remove>	
+		<name>//ss:subsystem</name>
+		<strict>false</strict>
+	</remove>
     <add>
         <inside>//s:profile</inside>
         <value>
