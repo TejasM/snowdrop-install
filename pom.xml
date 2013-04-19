@@ -8,7 +8,7 @@
   
   <properties>
   	<version.snowdrop>2.0.5.Final</version.snowdrop>
-  	<version.spring>3.1.1.RELEASE</version.spring>
+  	<version.spring>3.2.2.RELEASE</version.spring>
   </properties>
   
   <dependencies>
